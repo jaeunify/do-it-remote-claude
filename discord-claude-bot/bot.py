@@ -100,13 +100,11 @@ async def ask(ctx: commands.Context, *, prompt: str):
     message = await ctx.send(THINKING_MSG)
 
     try:
-        await claude.send_prompt(prompt)
-
         full_response = ""
         last_edit_time = 0.0
         current_message = message   # 2000자 초과 시 새 메시지로 교체
 
-        async for chunk in claude.stream_response():
+        async for chunk in claude.stream_response(prompt):
             full_response += chunk
 
             now = asyncio.get_event_loop().time()
