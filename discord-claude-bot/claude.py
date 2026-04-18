@@ -16,6 +16,9 @@ ANSI_ESCAPE = re.compile(r"\x1b(?:[@-Z\\-_]|\[[0-9;]*[ -/]*[@-~])")
 EDIT_INTERVAL = 0.5       # Discord 메시지 edit 최소 간격 (초)
 READ_SIZE     = 4096
 
+# claude.py 기준 상위 = 프로젝트 루트 (.claude/ 설정이 위치한 디렉토리)
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 
 def _find_claude() -> str:
     # .env의 CLAUDE_PATH 우선, 없으면 PATH에서 탐색
@@ -79,15 +82,16 @@ class ClaudeProcess:
 
         첫 호출은 새 대화, 이후는 --continue로 세션을 이어간다.
         """
-        args = [CLAUDE_EXE, "--dangerously-skip-permissions", "-p"]
+        args = [CLAUDE_EXE, "-p"]
         if not self._first:
             args.append("--continue")
         args.append(prompt)
 
-        logger.info(f"claude 실행: {' '.join(args[:4])} ...")
+        logger.info(f"claude 실행 (cwd={PROJECT_ROOT}): {' '.join(args[:3])} ...")
 
         self._current = await asyncio.create_subprocess_exec(
             *args,
+            cwd=PROJECT_ROOT,
             stdout=asyncio.subprocess.PIPE,
             stderr=asyncio.subprocess.PIPE,
         )
