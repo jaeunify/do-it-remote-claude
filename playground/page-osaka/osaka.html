@@ -356,6 +356,22 @@
     font-size: 14px;
   }
 
+  /* ===== 데이 상단 (메모 + 경로) ===== */
+  .day-top {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 6px 0 14px;
+    align-items: stretch;
+  }
+  .day-top .day-memo,
+  .day-top .day-route {
+    margin: 0;
+  }
+  @media (max-width: 720px) {
+    .day-top { grid-template-columns: 1fr; }
+  }
+
   /* ===== 데이 메모 ===== */
   .day-memo {
     margin: 6px 0 14px;
@@ -709,13 +725,29 @@
 
       <div class="day">
         <h3><span class="num">DAY 1</span> 도착 → 호텔 → 난바우동 → 돈키호테 <span class="date">· 5월 20일 (수)</span></h3>
-        <div class="day-memo">
-          <b>🍢 오늘의 테마 · 분식 끝내기</b>
-          <span class="eat-goals">
-            <span>🐙 타코야키</span>
-            <span>🍜 우동 (난바우동)</span>
-            <span>🥞 야키소바 (빵)</span>
-          </span>
+        <div class="day-top">
+          <div class="day-memo">
+            <b>🍢 오늘의 테마 · 분식 끝내기</b>
+            <span class="eat-goals">
+              <span>🐙 타코야키</span>
+              <span>🍜 우동 (난바우동)</span>
+              <span>🥞 야키소바 (빵)</span>
+            </span>
+          </div>
+          <div class="day-route">
+            <a class="route-btn" target="_blank" rel="noopener"
+               href="https://www.google.com/maps/dir/Kansai+International+Airport/Hearton+Hotel+Shinsaibashi/Namba+Udon/Shinsaibashi-suji+Shopping+Street/Don+Quijote+Nanba+Sennichimae/">
+              🗺 DAY 1 전체 경로 지도로 보기
+            </a>
+            <div class="route-legs">
+              <span>KIX → 난바 난카이 공항선 45~50분</span>
+              <span>난바역 → 호텔 도보 10분</span>
+              <span>호텔 → 난바우동 도보 10분</span>
+              <span>난바우동 → 신사이바시 도보 5분</span>
+              <span>옷 쇼핑 1시간 30분</span>
+              <span>→ 돈키호테 도보 5분</span>
+            </div>
+          </div>
         </div>
         <ul class="events">
           <li><span class="time">16:30</span><span class="content"><b>간사이공항(KIX) 도착</b><span class="note">입국심사 · 수하물 · 유심 수령 · 약 45~60분 소요</span></span></li>
@@ -727,30 +759,30 @@
           <li><span class="time">22:00</span><span class="content"><b>돈키호테 난바센니치마에점</b><span class="note">24시간 영업 · 야식 · 기념품 · 드럭스토어 쇼핑 · <b>야키소바빵 ✓</b></span><span class="must-buy">🛒 무조건 구매: <b>휴족시간</b> (발 피로 시트) · <b>휴눈시간</b> (눈 피로 시트) · <b>야키소바빵</b> (편의점/돈키)</span></span></li>
           <li><span class="time">23:00</span><span class="content"><b>도톤보리 야경 산책 후 호텔 복귀</b><span class="note">도보 약 10분</span></span></li>
         </ul>
-        <div class="day-route">
-          <a class="route-btn" target="_blank" rel="noopener"
-             href="https://www.google.com/maps/dir/Kansai+International+Airport/Hearton+Hotel+Shinsaibashi/Namba+Udon/Shinsaibashi-suji+Shopping+Street/Don+Quijote+Nanba+Sennichimae/">
-            🗺 DAY 1 전체 경로 지도로 보기
-          </a>
-          <div class="route-legs">
-            <span>KIX → 난바 난카이 공항선 45~50분</span>
-            <span>난바역 → 호텔 도보 10분</span>
-            <span>호텔 → 난바우동 도보 10분</span>
-            <span>난바우동 → 신사이바시 도보 5분</span>
-            <span>옷 쇼핑 1시간 30분</span>
-            <span>→ 돈키호테 도보 5분</span>
-          </div>
-        </div>
       </div>
 
       <div class="day">
         <h3><span class="num">DAY 2</span> 교토 당일치기 <span class="date">· 5월 21일 (목)</span></h3>
-        <div class="day-memo">
-          <b>🍜 오늘의 테마 · 교토에서 라멘 &amp; 텐동</b>
-          <span class="eat-goals">
-            <span>🍥 라멘</span>
-            <span>🍤 텐동 (마키노)</span>
-          </span>
+        <div class="day-top">
+          <div class="day-memo">
+            <b>🍜 오늘의 테마 · 교토에서 라멘 &amp; 텐동</b>
+            <span class="eat-goals">
+              <span>🍥 라멘</span>
+              <span>🍤 텐동 (마키노)</span>
+            </span>
+          </div>
+          <div class="day-route">
+            <a class="route-btn" target="_blank" rel="noopener"
+               href="https://www.google.co.kr/maps/place/%EA%B8%B0%EC%9A%94%EB%AF%B8%EC%A6%88%EB%8D%B0%EB%9D%BC/@35.0066134,135.7464137,15z/data=!3m1!5s0x600108f36f63739d:0xbb7790379960d1c6!4m49!1m42!4m41!1m6!1m2!1s0x600108d385dcfb07:0x62af658650c434ba!2z6riw7JqU66-47KaI642w6528IOydvOuzuCDjgJI2MDUtMDg2MiBLeW90bywgSGlnYXNoaXlhbWEgV2FyZCwgS2l5b21penUsIDEgQ2hvbWXiiJIyOTQ!2m2!1d135.784661!2d34.9946662!1m6!1m2!1s0x60010879a010eca9:0xc77ac89d5a241ae9!2z7JW87IKs7Lm0IOyLoOyCrCDsnbzrs7gg44CSNjA1LTAwNzMgS3lvdG8sIEhpZ2FzaGl5YW1hIFdhcmQsIEdpb25tYWNoaSBLaXRhZ2F3YSwgNjI1!2m2!1d135.7785534!2d35.0036559!1m3!2m2!1d135.772146!2d35.0089539!1m6!1m2!1s0x600108f36f9b98b3:0x9af18fff82701280!2sClub+Metro,+BF+82+Shimotsutsumicho,+Sakyo+Ward,+Kyoto,+606-8396+%EC%9D%BC%EB%B3%B8!2m2!1d135.772704!2d35.0170455!1m3!2m2!1d135.7594653!2d35.0175595!1m3!2m2!1d135.759637!2d35.0108989!1m6!1m2!1s0x600107d40a2b9b0b:0x106b8759906a2f2f!2z64uI7KGwIOyEsSDsnbzrs7gg44CSNjA0LTgzMDEgS3lvdG8sIE5ha2FneW8gV2FyZCwgTmlqb2pvY2hvLCA1NDE!2m2!1d135.7484258!2d35.0140379!3e2!3m5!1s0x600108d385dcfb07:0x62af658650c434ba!8m2!3d34.9946662!4d135.784661!16zL20vMDJ5bjNn">
+              🗺 DAY 2 교토 경로 지도로 보기
+            </a>
+            <div class="route-legs">
+              <span>기요미즈데라</span>
+              <span>야사카 신사 (기온)</span>
+              <span>Club Metro</span>
+              <span>니조성</span>
+            </div>
+          </div>
         </div>
         <ul class="events">
           <li><span class="time">08:00</span><span class="content"><b>난바역 → 교토역</b><span class="note">미도스지선 우메다 환승 → JR 교토선 · 약 1시간</span></span></li>
@@ -797,19 +829,6 @@
           <img src="resources/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202026-04-19%20160927.png" alt="교토 니시키 시장 · 데라마치 · 폰토초 · 기온시조역 구역 지도" onerror="this.parentElement.classList.add('missing')">
           <figcaption>교토 시조카와라마치 핵심 구역 · 니시키 시장 · 데라마치 상점가 · 폰토초 · 다카세강 · 기온시조역</figcaption>
         </figure>
-        </div>
-
-        <div class="day-route">
-          <a class="route-btn" target="_blank" rel="noopener"
-             href="https://www.google.co.kr/maps/place/%EA%B8%B0%EC%9A%94%EB%AF%B8%EC%A6%88%EB%8D%B0%EB%9D%BC/@35.0066134,135.7464137,15z/data=!3m1!5s0x600108f36f63739d:0xbb7790379960d1c6!4m49!1m42!4m41!1m6!1m2!1s0x600108d385dcfb07:0x62af658650c434ba!2z6riw7JqU66-47KaI642w6528IOydvOuzuCDjgJI2MDUtMDg2MiBLeW90bywgSGlnYXNoaXlhbWEgV2FyZCwgS2l5b21penUsIDEgQ2hvbWXiiJIyOTQ!2m2!1d135.784661!2d34.9946662!1m6!1m2!1s0x60010879a010eca9:0xc77ac89d5a241ae9!2z7JW87IKs7Lm0IOyLoOyCrCDsnbzrs7gg44CSNjA1LTAwNzMgS3lvdG8sIEhpZ2FzaGl5YW1hIFdhcmQsIEdpb25tYWNoaSBLaXRhZ2F3YSwgNjI1!2m2!1d135.7785534!2d35.0036559!1m3!2m2!1d135.772146!2d35.0089539!1m6!1m2!1s0x600108f36f9b98b3:0x9af18fff82701280!2sClub+Metro,+BF+82+Shimotsutsumicho,+Sakyo+Ward,+Kyoto,+606-8396+%EC%9D%BC%EB%B3%B8!2m2!1d135.772704!2d35.0170455!1m3!2m2!1d135.7594653!2d35.0175595!1m3!2m2!1d135.759637!2d35.0108989!1m6!1m2!1s0x600107d40a2b9b0b:0x106b8759906a2f2f!2z64uI7KGwIOyEsSDsnbzrs7gg44CSNjA0LTgzMDEgS3lvdG8sIE5ha2FneW8gV2FyZCwgTmlqb2pvY2hvLCA1NDE!2m2!1d135.7484258!2d35.0140379!3e2!3m5!1s0x600108d385dcfb07:0x62af658650c434ba!8m2!3d34.9946662!4d135.784661!16zL20vMDJ5bjNn">
-            🗺 DAY 2 교토 경로 지도로 보기
-          </a>
-          <div class="route-legs">
-            <span>기요미즈데라</span>
-            <span>→ 야사카 신사 (기온)</span>
-            <span>→ Club Metro</span>
-            <span>→ 니조성</span>
-          </div>
         </div>
       </div>
 
