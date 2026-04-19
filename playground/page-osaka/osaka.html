@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>오사카 여행 가이드 · 2026.05.20 - 05.23</title>
+<style>
+  :root {
+    --bg: #f7f5f2;
+    --card: #ffffff;
+    --ink: #1f2937;
+    --muted: #6b7280;
+    --line: #e5e7eb;
+    --accent: #e85d4e;
+    --accent-soft: #fff1ee;
+    --blue: #3b82f6;
+    --green: #10b981;
+    --yellow: #f59e0b;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans KR", "Malgun Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 32px 20px 80px;
+  }
+
+  header.hero {
+    text-align: center;
+    padding: 40px 20px 32px;
+    background: linear-gradient(135deg, #ff8a7a 0%, #e85d4e 100%);
+    color: #fff;
+    border-radius: 20px;
+    margin-bottom: 32px;
+    box-shadow: 0 10px 30px rgba(232, 93, 78, 0.25);
+  }
+  header.hero .tag {
+    display: inline-block;
+    padding: 4px 12px;
+    background: rgba(255, 255, 255, 0.22);
+    border-radius: 999px;
+    font-size: 13px;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+  }
+  header.hero h1 {
+    font-size: 38px;
+    margin: 0 0 8px;
+    font-weight: 800;
+    letter-spacing: -1px;
+  }
+  header.hero p {
+    margin: 0;
+    opacity: 0.95;
+    font-size: 16px;
+  }
+
+  .flight-info {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 16px;
+    align-items: center;
+    margin-top: 24px;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 16px 20px;
+    border-radius: 14px;
+  }
+  .flight-info .col { text-align: center; }
+  .flight-info .label { font-size: 12px; opacity: 0.85; letter-spacing: 1px; }
+  .flight-info .time { font-size: 22px; font-weight: 700; margin-top: 4px; }
+  .flight-info .date { font-size: 13px; opacity: 0.9; }
+  .flight-info .arrow { font-size: 24px; opacity: 0.7; }
+
+  section {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 28px 28px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+  }
+
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 20px;
+    font-size: 22px;
+    font-weight: 700;
+  }
+  .section-title .dot {
+    width: 10px;
+    height: 10px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+
+  /* ===== 일정 ===== */
+  .schedule { display: flex; flex-direction: column; gap: 20px; }
+
+  .day {
+    border-left: 3px solid var(--accent);
+    padding: 4px 0 4px 20px;
+  }
+  .day h3 {
+    margin: 0 0 10px;
+    font-size: 18px;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .day h3 .num {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 12px;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-weight: 600;
+  }
+  .day h3 .date {
+    color: var(--muted);
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .events { list-style: none; padding: 0; margin: 0; }
+  .events li {
+    display: grid;
+    grid-template-columns: 70px 1fr;
+    gap: 16px;
+    padding: 10px 0;
+    border-bottom: 1px dashed var(--line);
+  }
+  .events li:last-child { border-bottom: 0; }
+  .events .time {
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 14px;
+    padding-top: 2px;
+  }
+  .events .content { font-size: 15px; }
+  .events .content b { font-weight: 700; }
+  .events .content .note {
+    display: block;
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+  .events .content .must-buy {
+    display: inline-block;
+    margin-top: 6px;
+    padding: 5px 10px;
+    font-size: 12px;
+    background: #fff4e6;
+    border: 1px solid #ffcc80;
+    color: #8a4b00;
+    border-radius: 8px;
+  }
+  .events .content .must-buy b { color: #c2410c; font-weight: 700; }
+
+  /* ===== 필수 먹거리 ===== */
+  .must-eat {
+    background: linear-gradient(135deg, #fff5f3 0%, #ffe8e2 100%);
+    border: 1px solid #ffc1b5;
+  }
+  .must-eat .section-title { color: #9a3412; }
+  .eat-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 12px;
+  }
+  .eat-card {
+    background: #fff;
+    border: 1px solid #ffd4cc;
+    border-radius: 12px;
+    padding: 14px 8px 12px;
+    text-align: center;
+    position: relative;
+    transition: all 0.15s;
+  }
+  .eat-card:hover {
+    box-shadow: 0 4px 14px rgba(232, 93, 78, 0.1);
+  }
+  .eat-card .emoji {
+    font-size: 28px;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .eat-card .name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .eat-card .sub {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+  .eat-card .day-tag {
+    display: inline-block;
+    margin-top: 6px;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 999px;
+    letter-spacing: 0.5px;
+  }
+  .eat-card .day-tag.d1 { background: #ffe4de; color: #b91c1c; }
+  .eat-card .day-tag.d2 { background: #dbeafe; color: #1e40af; }
+  .eat-card .day-tag.d3 { background: #dcfce7; color: #166534; }
+  .eat-card .day-tag.tbd { background: #f3f4f6; color: #6b7280; }
+  @media (max-width: 720px) {
+    .eat-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  /* ===== 맛집 + 지도 레이아웃 ===== */
+  .food-map-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    align-items: start;
+    margin-top: 16px;
+  }
+  .food-map-grid .food-box { margin-top: 0; }
+  .food-map-grid .day-image { margin-top: 0; }
+  @media (max-width: 900px) {
+    .food-map-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ===== 맛집 리스트 ===== */
+  .food-box {
+    margin-top: 16px;
+    padding: 18px 20px;
+    background: #fff9f7;
+    border: 1px solid #ffd8cc;
+    border-radius: 14px;
+  }
+  .food-box h4 {
+    margin: 0 0 14px;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #9a3412;
+  }
+  .food-box h4 .emoji { font-size: 18px; }
+  .food-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+  .food-item {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 12px 14px;
+    position: relative;
+  }
+  .food-item.warn {
+    border-left: 3px solid #dc2626;
+  }
+  .food-item .top {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 4px;
+  }
+  .food-item .name {
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--ink);
+  }
+  .food-item .cat {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: #f3f4f6;
+    color: #4b5563;
+  }
+  .food-item .warn-chip {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: #fee2e2;
+    color: #991b1b;
+    font-weight: 600;
+  }
+  .food-item .desc {
+    font-size: 13px;
+    color: var(--muted);
+    margin: 2px 0 0;
+  }
+  .food-item .memo {
+    font-size: 13px;
+    margin: 6px 0 0;
+    padding: 6px 10px;
+    background: #fef9c3;
+    border-radius: 6px;
+    color: #713f12;
+    display: inline-block;
+  }
+  .food-item .memo b { color: #854d0e; font-weight: 700; }
+  .food-item .food-links {
+    margin-top: 8px;
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .food-item .food-links a {
+    font-size: 12px;
+    text-decoration: none;
+    padding: 3px 10px;
+    border-radius: 6px;
+    border: 1px solid #ffd4cc;
+    color: var(--accent);
+  }
+  .food-item .food-links a:hover { background: var(--accent-soft); }
+
+  /* ===== 데일리 이미지 ===== */
+  .day-image {
+    margin: 16px 0 0;
+    padding: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: #f9fafb;
+  }
+  .day-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .day-image figcaption {
+    padding: 10px 14px;
+    font-size: 13px;
+    color: var(--muted);
+    background: #fafafa;
+    border-top: 1px solid var(--line);
+  }
+  .day-image.missing {
+    padding: 40px 20px;
+    text-align: center;
+  }
+  .day-image.missing img { display: none; }
+  .day-image.missing::before {
+    content: "🗺 이미지 파일을 불러올 수 없어요";
+    display: block;
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  /* ===== 데이 메모 ===== */
+  .day-memo {
+    margin: 6px 0 14px;
+    padding: 12px 14px;
+    background: #fef3c7;
+    border: 1px solid #fde68a;
+    border-radius: 10px;
+    font-size: 13px;
+    color: #713f12;
+  }
+  .day-memo b { display: block; color: #854d0e; margin-bottom: 6px; font-size: 13px; }
+  .day-memo .eat-goals { display: flex; flex-wrap: wrap; gap: 6px; }
+  .day-memo .eat-goals span {
+    background: #fff;
+    border: 1px solid #fde68a;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    color: #78350f;
+  }
+
+  /* ===== 데일리 경로 ===== */
+  .day-route {
+    margin-top: 14px;
+    padding: 14px 16px;
+    background: linear-gradient(135deg, #fff5f3 0%, #fff 100%);
+    border: 1px dashed #ffc1b5;
+    border-radius: 12px;
+  }
+  .route-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    background: var(--accent);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 999px;
+    transition: all 0.15s;
+  }
+  .route-btn:hover {
+    background: #d44a3c;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(232, 93, 78, 0.3);
+  }
+  .route-legs {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .route-legs span {
+    font-size: 12px;
+    padding: 3px 10px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: #4b5563;
+  }
+
+  /* ===== 지도 ===== */
+  .map-wrap {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 12px;
+    border: 1px solid var(--line);
+  }
+  .map-wrap iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border: 0;
+  }
+  .map-links {
+    margin-top: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .map-links a {
+    font-size: 13px;
+    padding: 6px 12px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    text-decoration: none;
+    border-radius: 999px;
+    border: 1px solid #ffd4cc;
+    transition: all 0.15s;
+  }
+  .map-links a:hover {
+    background: var(--accent);
+    color: #fff;
+  }
+
+  /* ===== 체크리스트 ===== */
+  .check-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .check-col {
+    background: #fafafa;
+    border-radius: 12px;
+    padding: 20px;
+  }
+  .check-col.before { border-top: 4px solid var(--blue); }
+  .check-col.during { border-top: 4px solid var(--green); }
+  .check-col h4 {
+    margin: 0 0 14px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .check-col h4 .icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+  }
+  .check-col.before h4 .icon { background: var(--blue); }
+  .check-col.during h4 .icon { background: var(--green); }
+
+  .check-list { list-style: none; padding: 0; margin: 0; }
+  .check-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px dashed var(--line);
+  }
+  .check-list li:last-child { border-bottom: 0; }
+  .check-list input[type="checkbox"] {
+    margin-top: 5px;
+    width: 16px;
+    height: 16px;
+    accent-color: var(--accent);
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  .check-list label {
+    cursor: pointer;
+    flex: 1;
+    font-size: 14px;
+  }
+  .check-list label .hint {
+    display: block;
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 1px;
+  }
+  .check-list input[type="checkbox"]:checked + label {
+    text-decoration: line-through;
+    color: var(--muted);
+  }
+
+  .weather-box {
+    background: #fffbea;
+    border: 1px solid #fde68a;
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-top: 16px;
+    font-size: 13px;
+    color: #78350f;
+  }
+  .weather-box b { color: #92400e; }
+
+  /* ===== 숙소 ===== */
+  .hotel-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .hotel-card {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 18px;
+    position: relative;
+    transition: all 0.15s;
+  }
+  .hotel-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(232, 93, 78, 0.12);
+  }
+  .hotel-card h4 {
+    margin: 0 0 6px;
+    font-size: 17px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .hotel-card .badge {
+    display: inline-block;
+    font-size: 11px;
+    padding: 2px 8px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    border-radius: 999px;
+    font-weight: 600;
+  }
+  .hotel-card .addr {
+    font-size: 13px;
+    color: var(--muted);
+    margin: 0 0 10px;
+  }
+  .hotel-card .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+  }
+  .hotel-card .meta span {
+    font-size: 12px;
+    padding: 3px 8px;
+    background: #f3f4f6;
+    border-radius: 6px;
+    color: #374151;
+  }
+  .hotel-card .links {
+    margin-top: 12px;
+    display: flex;
+    gap: 8px;
+  }
+  .hotel-card .links a {
+    font-size: 12px;
+    color: var(--accent);
+    text-decoration: none;
+    border: 1px solid #ffd4cc;
+    padding: 4px 10px;
+    border-radius: 6px;
+  }
+  .hotel-card .links a:hover { background: var(--accent-soft); }
+
+  @media (max-width: 720px) {
+    .hotel-grid { grid-template-columns: 1fr; }
+  }
+
+  footer {
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+    padding-top: 24px;
+  }
+
+  @media (max-width: 720px) {
+    header.hero h1 { font-size: 28px; }
+    .flight-info { grid-template-columns: 1fr; }
+    .flight-info .arrow { transform: rotate(90deg); }
+    .check-grid { grid-template-columns: 1fr; }
+    section { padding: 22px 18px; }
+    .events li { grid-template-columns: 60px 1fr; gap: 10px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ===== HERO ===== -->
+  <header class="hero">
+    <div class="tag">OSAKA · JAPAN</div>
+    <h1>오사카 여행 가이드</h1>
+    <p>3박 4일 · 2026년 5월 20일 ~ 5월 23일</p>
+
+    <div class="flight-info">
+      <div class="col">
+        <div class="label">ARRIVAL</div>
+        <div class="time">16:30</div>
+        <div class="date">5월 20일 (수) · 간사이공항 (KIX)</div>
+      </div>
+      <div class="arrow">→</div>
+      <div class="col">
+        <div class="label">DEPARTURE</div>
+        <div class="time">11:10</div>
+        <div class="date">5월 23일 (토) · 귀국편</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== 무조건 먹을 것 ===== -->
+  <section class="must-eat">
+    <h2 class="section-title"><span class="dot"></span>🍽 일본 가서 무조건 먹을 것</h2>
+    <div class="eat-grid">
+      <div class="eat-card" data-id="tendon"><span class="emoji">🍤</span><div class="name">텐동</div><div class="sub">마키노</div><span class="day-tag d2">DAY 2 · 교토</span></div>
+      <div class="eat-card" data-id="sushi"><span class="emoji">🍣</span><div class="name">스시</div><div class="sub">키타로우즈시</div><span class="day-tag d3">DAY 3 · 오사카</span></div>
+      <div class="eat-card" data-id="grilled-fish"><span class="emoji">🐟</span><div class="name">생선구이</div><div class="sub">야키자카나</div><span class="day-tag d3">DAY 3 · 오사카</span></div>
+      <div class="eat-card" data-id="namba-udon"><span class="emoji">🍜</span><div class="name">난바우동</div><div class="sub">오사카 우동</div><span class="day-tag d1">DAY 1 · 난바</span></div>
+      <div class="eat-card" data-id="unagi"><span class="emoji">🍱</span><div class="name">장어구이</div><div class="sub">우나기동</div><span class="day-tag tbd">미정</span></div>
+      <div class="eat-card" data-id="wagyu"><span class="emoji">🥩</span><div class="name">와규</div><div class="sub">우메다</div><span class="day-tag d3">DAY 3 · 오사카</span></div>
+      <div class="eat-card" data-id="ramen"><span class="emoji">🍥</span><div class="name">라멘</div><div class="sub">폰토초</div><span class="day-tag d2">DAY 2 · 교토</span></div>
+      <div class="eat-card" data-id="takoyaki"><span class="emoji">🐙</span><div class="name">타코야키</div><div class="sub">도톤보리</div><span class="day-tag d1">DAY 1 · 난바</span></div>
+      <div class="eat-card" data-id="okonomiyaki"><span class="emoji">🥞</span><div class="name">오코노미야키</div><div class="sub">일본식 부침</div><span class="day-tag tbd">미정</span></div>
+      <div class="eat-card" data-id="yakisoba-pan"><span class="emoji">🥖</span><div class="name">야끼소바빵</div><div class="sub">돈키/편의점</div><span class="day-tag d1">DAY 1 · 난바</span></div>
+      <div class="eat-card" data-id="gyukatsu"><span class="emoji">🥩</span><div class="name">규카츠</div><div class="sub">소고기 카츠</div><span class="day-tag tbd">미정</span></div>
+      <div class="eat-card" data-id="sukiyaki"><span class="emoji">🍲</span><div class="name">스키야키</div><div class="sub">전골</div><span class="day-tag tbd">미정</span></div>
+    </div>
+  </section>
+
+  <!-- ===== 숙소 ===== -->
+  <section>
+    <h2 class="section-title"><span class="dot"></span>숙소 · <span style="font-size:16px;font-weight:500;color:var(--muted);">난바역 도보권</span></h2>
+    <div class="hotel-grid">
+
+      <div class="hotel-card" style="border-color:var(--accent);background:var(--accent-soft);">
+        <h4>하톤 호텔 신사이바시 <span class="badge" style="background:var(--accent);color:#fff;">✓ 확정</span></h4>
+        <p class="addr">〒542-0086 Osaka, Chuo Ward, Nishishinsaibashi 1-5-24</p>
+        <div class="meta">
+          <span>🚇 난바역 도보 10분</span>
+          <span>🍜 도톤보리 도보권</span>
+          <span>🛍 신사이바시 인접</span>
+        </div>
+        <div class="links">
+          <a href="https://maps.app.goo.gl/bxCSxNtGRNe3CBRPA" target="_blank" rel="noopener">지도</a>
+          <a href="https://www.google.com/search?q=Hearton+Hotel+Shinsaibashi" target="_blank" rel="noopener">정보</a>
+        </div>
+      </div>
+
+      <div class="hotel-card">
+        <h4>테이코쿠(제국) 호텔 오사카 <span class="badge">후보 B</span></h4>
+        <p class="addr">大阪府大阪市北区天満橋 · 사쿠라노미야</p>
+        <div class="meta">
+          <span>🚇 사쿠라노미야/덴마바시</span>
+          <span>🏯 오사카성 인근</span>
+          <span>🌸 벚꽃공원 바로 앞</span>
+        </div>
+        <div class="links">
+          <a href="https://maps.app.goo.gl/Vbo55Mqpc6qfCwKw8" target="_blank" rel="noopener">지도</a>
+          <a href="https://www.google.com/search?q=Imperial+Hotel+Osaka" target="_blank" rel="noopener">정보</a>
+        </div>
+      </div>
+
+    </div>
+    <div class="weather-box" style="background:#eff6ff;border-color:#bfdbfe;color:#1e40af;">
+      <b>Tip ·</b> 하톤 호텔은 난바·도톤보리 도보권이라 <b>밤 활동·쇼핑에 유리</b>, 테이코쿠는 <b>조용한 공원뷰·고급스러운 분위기</b>가 강점. 일정상 번화가 중심 이동이면 하톤, 여유로운 분위기면 테이코쿠 추천.
+    </div>
+  </section>
+
+  <!-- ===== 일정 ===== -->
+  <section>
+    <h2 class="section-title"><span class="dot"></span>일정</h2>
+    <div class="schedule">
+
+      <div class="day">
+        <h3><span class="num">DAY 1</span> 도착 → 호텔 → 난바우동 → 돈키호테 <span class="date">· 5월 20일 (수)</span></h3>
+        <div class="day-memo">
+          <b>🍢 오늘의 테마 · 분식 끝내기</b>
+          <span class="eat-goals">
+            <span>🐙 타코야키</span>
+            <span>🍜 우동 (난바우동)</span>
+            <span>🥞 야키소바 (빵)</span>
+          </span>
+        </div>
+        <ul class="events">
+          <li><span class="time">16:30</span><span class="content"><b>간사이공항(KIX) 도착</b><span class="note">입국심사 · 수하물 · 유심 수령 · 약 45~60분 소요</span></span></li>
+          <li><span class="time">17:30</span><span class="content"><b>난카이 공항선 탑승</b><span class="note">간사이공항역 → 난바역 · 약 45~50분 · 970엔 · 교통권 사용</span></span></li>
+          <li><span class="time">18:15</span><span class="content"><b>난바역 도착 → 하톤 호텔 신사이바시</b><span class="note">도보 약 10분 · 체크인 &amp; 짐 풀기</span></span></li>
+          <li><span class="time">19:30</span><span class="content"><b>난바우동 (저녁) 🍜</b><span class="note">호텔 → 도보 약 10분 · 오사카 현지 우동 맛집 · <b>우동 ✓</b></span></span></li>
+          <li><span class="time">20:15</span><span class="content"><b>도톤보리 타코야키 🐙</b><span class="note">코가류 / 아키노부 / 타코야키쥬하치방 중 택1 · <b>타코야키 ✓</b></span></span></li>
+          <li><span class="time">20:30</span><span class="content"><b>번화가 옷 쇼핑</b><span class="note">신사이바시·심사이바시스지 상점가 · 약 1시간 30분 · 유니클로·지유·편집샵 구경</span></span></li>
+          <li><span class="time">22:00</span><span class="content"><b>돈키호테 난바센니치마에점</b><span class="note">24시간 영업 · 야식 · 기념품 · 드럭스토어 쇼핑 · <b>야키소바빵 ✓</b></span><span class="must-buy">🛒 무조건 구매: <b>휴족시간</b> (발 피로 시트) · <b>휴눈시간</b> (눈 피로 시트) · <b>야키소바빵</b> (편의점/돈키)</span></span></li>
+          <li><span class="time">23:00</span><span class="content"><b>도톤보리 야경 산책 후 호텔 복귀</b><span class="note">도보 약 10분</span></span></li>
+        </ul>
+        <div class="day-route">
+          <a class="route-btn" target="_blank" rel="noopener"
+             href="https://www.google.com/maps/dir/Kansai+International+Airport/Hearton+Hotel+Shinsaibashi/Namba+Udon/Shinsaibashi-suji+Shopping+Street/Don+Quijote+Nanba+Sennichimae/">
+            🗺 DAY 1 전체 경로 지도로 보기
+          </a>
+          <div class="route-legs">
+            <span>KIX → 난바 난카이 공항선 45~50분</span>
+            <span>난바역 → 호텔 도보 10분</span>
+            <span>호텔 → 난바우동 도보 10분</span>
+            <span>난바우동 → 신사이바시 도보 5분</span>
+            <span>옷 쇼핑 1시간 30분</span>
+            <span>→ 돈키호테 도보 5분</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="day">
+        <h3><span class="num">DAY 2</span> 교토 당일치기 <span class="date">· 5월 21일 (목)</span></h3>
+        <div class="day-memo">
+          <b>🍜 오늘의 테마 · 교토에서 라멘 &amp; 텐동</b>
+          <span class="eat-goals">
+            <span>🍥 라멘</span>
+            <span>🍤 텐동 (마키노)</span>
+          </span>
+        </div>
+        <ul class="events">
+          <li><span class="time">08:00</span><span class="content"><b>난바역 → 교토역</b><span class="note">미도스지선 우메다 환승 → JR 교토선 · 약 1시간</span></span></li>
+          <li><span class="time">09:30</span><span class="content"><b>후시미 이나리 신사</b><span class="note">센본토리이 · 이른 오전이 한산 · 2~3시간 코스</span></span></li>
+          <li><span class="time">12:30</span><span class="content"><b>점심 - 텐동 마키노 🍤</b><span class="note">가와라마치역 인근 · <b>텐동 ✓</b></span></span></li>
+          <li><span class="time">14:00</span><span class="content"><b>니시키 시장 &amp; 데라마치 상점가</b><span class="note">교토의 부엌 · 먹거리 골목 · 한큐 가와라마치역 인근</span></span></li>
+          <li><span class="time">15:30</span><span class="content"><b>기요미즈데라 &amp; 니넨자카</b><span class="note">기모노 대여 인생샷 구간</span></span></li>
+          <li><span class="time">17:30</span><span class="content"><b>기온 거리 &amp; 하나미코지</b><span class="note">게이샤 거리 · 골목 사진 스팟</span></span></li>
+          <li><span class="time">18:30</span><span class="content"><b>폰토초 저녁 - 라멘 🍥</b><span class="note">다카세강 옆 골목 · 교토 유명 라멘집 · <b>라멘 ✓</b></span></span></li>
+          <li><span class="time">21:00</span><span class="content"><b>교토역 → 난바 복귀</b></span></li>
+        </ul>
+
+        <div class="food-map-grid">
+        <div class="food-box">
+          <h4><span class="emoji">🍣</span> 교토 맛집 리스트</h4>
+          <ul class="food-list">
+            <li class="food-item warn">
+              <div class="top">
+                <span class="name">안지 (Anji)</span>
+                <span class="cat">숙성회</span>
+                <span class="warn-chip">⚠ 한 달 전 예약 필수</span>
+              </div>
+              <p class="desc">교토 현지인 사이 유명한 숙성회 전문점. 예약 없이는 입장 불가.</p>
+              <div class="food-links">
+                <a href="https://maps.app.goo.gl/EFVuai8vTV7hU3kk6" target="_blank" rel="noopener">지도</a>
+              </div>
+            </li>
+
+            <li class="food-item">
+              <div class="top">
+                <span class="name">텐동 마키노</span>
+                <span class="cat">텐동</span>
+              </div>
+              <p class="desc">바삭한 튀김과 진한 소스의 일본식 튀김 덮밥 체인. 교토 시내점.</p>
+              <p class="memo">📝 3번 + 6번</p>
+              <div class="food-links">
+                <a href="https://www.google.co.kr/maps/place/%ED%85%90%EB%8F%99+%EB%A7%88%ED%82%A4%EB%85%B8/@35.007003,135.767002,17z" target="_blank" rel="noopener">지도</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <figure class="day-image">
+          <img src="resources/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202026-04-19%20160927.png" alt="교토 니시키 시장 · 데라마치 · 폰토초 · 기온시조역 구역 지도" onerror="this.parentElement.classList.add('missing')">
+          <figcaption>교토 시조카와라마치 핵심 구역 · 니시키 시장 · 데라마치 상점가 · 폰토초 · 다카세강 · 기온시조역</figcaption>
+        </figure>
+        </div>
+
+        <div class="day-route">
+          <a class="route-btn" target="_blank" rel="noopener"
+             href="https://www.google.co.kr/maps/place/%EA%B8%B0%EC%9A%94%EB%AF%B8%EC%A6%88%EB%8D%B0%EB%9D%BC/@35.0066134,135.7464137,15z/data=!3m1!5s0x600108f36f63739d:0xbb7790379960d1c6!4m49!1m42!4m41!1m6!1m2!1s0x600108d385dcfb07:0x62af658650c434ba!2z6riw7JqU66-47KaI642w6528IOydvOuzuCDjgJI2MDUtMDg2MiBLeW90bywgSGlnYXNoaXlhbWEgV2FyZCwgS2l5b21penUsIDEgQ2hvbWXiiJIyOTQ!2m2!1d135.784661!2d34.9946662!1m6!1m2!1s0x60010879a010eca9:0xc77ac89d5a241ae9!2z7JW87IKs7Lm0IOyLoOyCrCDsnbzrs7gg44CSNjA1LTAwNzMgS3lvdG8sIEhpZ2FzaGl5YW1hIFdhcmQsIEdpb25tYWNoaSBLaXRhZ2F3YSwgNjI1!2m2!1d135.7785534!2d35.0036559!1m3!2m2!1d135.772146!2d35.0089539!1m6!1m2!1s0x600108f36f9b98b3:0x9af18fff82701280!2sClub+Metro,+BF+82+Shimotsutsumicho,+Sakyo+Ward,+Kyoto,+606-8396+%EC%9D%BC%EB%B3%B8!2m2!1d135.772704!2d35.0170455!1m3!2m2!1d135.7594653!2d35.0175595!1m3!2m2!1d135.759637!2d35.0108989!1m6!1m2!1s0x600107d40a2b9b0b:0x106b8759906a2f2f!2z64uI7KGwIOyEsSDsnbzrs7gg44CSNjA0LTgzMDEgS3lvdG8sIE5ha2FneW8gV2FyZCwgTmlqb2pvY2hvLCA1NDE!2m2!1d135.7484258!2d35.0140379!3e2!3m5!1s0x600108d385dcfb07:0x62af658650c434ba!8m2!3d34.9946662!4d135.784661!16zL20vMDJ5bjNn">
+            🗺 DAY 2 교토 경로 지도로 보기
+          </a>
+          <div class="route-legs">
+            <span>기요미즈데라</span>
+            <span>→ 야사카 신사 (기온)</span>
+            <span>→ Club Metro</span>
+            <span>→ 니조성</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="day">
+        <h3><span class="num">DAY 3</span> 오사카 시내 투어 <span class="date">· 5월 22일 (금)</span></h3>
+        <div class="day-memo">
+          <b>🍣 오늘의 테마 · 점심 스시 · 저녁 와규 &amp; 생선구이</b>
+          <span class="eat-goals">
+            <span>🍣 스시 (키타로우즈시)</span>
+            <span>🥩 와규</span>
+            <span>🐟 생선구이</span>
+          </span>
+        </div>
+        <ul class="events">
+          <li><span class="time">09:30</span><span class="content"><b>오사카성 &amp; 공원</b><span class="note">천수각 전망 · 공원 산책</span></span></li>
+          <li><span class="time">12:30</span><span class="content"><b>점심 - 키타로우즈시 도구야스지 🍣</b><span class="note">예약 필수 · <b>스시 ✓</b></span></span></li>
+          <li><span class="time">14:30</span><span class="content"><b>신사이바시 쇼핑</b><span class="note">드럭스토어 · 의류 · 기념품</span></span></li>
+          <li><span class="time">17:30</span><span class="content"><b>우메다 스카이빌딩</b><span class="note">공중정원 전망대 · 일몰 추천</span></span></li>
+          <li><span class="time">20:00</span><span class="content"><b>저녁 - 와규 🥩</b><span class="note">우메다 야키니쿠·철판 와규 맛집 · <b>와규 ✓</b></span></span></li>
+        </ul>
+
+        <div class="food-box">
+          <h4><span class="emoji">🍣</span> 오사카 맛집 리스트</h4>
+          <ul class="food-list">
+            <li class="food-item warn">
+              <div class="top">
+                <span class="name">키타로우즈시 도구야스지 (きたろう寿司)</span>
+                <span class="cat">스시 · 로바타</span>
+                <span class="warn-chip">⚠ 예약 필수</span>
+              </div>
+              <p class="desc">도구야스지 상점가에 있는 로바타·스시 인기집. 한국인 예약 많아 사전 예약 필수.</p>
+              <div class="food-links">
+                <a href="https://tabelog.com/kr/osaka/A2701/A270202/27140201/?cid=google_yoyaku" target="_blank" rel="noopener">타베로그 예약</a>
+                <a href="https://www.google.com/maps/search/kitaro+sushi+doguyasuji+osaka" target="_blank" rel="noopener">지도</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="day">
+        <h3><span class="num">DAY 4</span> 귀국 <span class="date">· 5월 23일 (토)</span></h3>
+        <ul class="events">
+          <li><span class="time">07:30</span><span class="content"><b>호텔 체크아웃 · 아침</b><span class="note">난바역 인근 카페/편의점</span></span></li>
+          <li><span class="time">08:00</span><span class="content"><b>난바역 → 간사이공항</b><span class="note">난카이 공항선 · 약 45~50분 · 970엔 · 교통권 사용</span></span></li>
+          <li><span class="time">09:10</span><span class="content"><b>간사이공항 도착 · 체크인</b><span class="note">국제선은 2시간 전 도착 권장</span></span></li>
+          <li><span class="time">11:10</span><span class="content"><b>귀국 비행기 탑승</b></span></li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== 체크리스트 ===== -->
+  <section>
+    <h2 class="section-title"><span class="dot"></span>체크리스트</h2>
+    <div class="check-grid">
+
+      <!-- 가기 전 -->
+      <div class="check-col before">
+        <h4><span class="icon">1</span> 가기 전 준비</h4>
+        <ul class="check-list">
+          <li><input type="checkbox" id="b1"><label for="b1">여권 유효기간 확인<span class="hint">입국일 기준 6개월 이상</span></label></li>
+          <li><input type="checkbox" id="b2"><label for="b2">항공권 · 숙소 예약 확인</label></li>
+          <li><input type="checkbox" id="b3"><label for="b3">Visit Japan Web 사전 등록<span class="hint">입국심사 · 세관 QR</span></label></li>
+          <li><input type="checkbox" id="b4"><label for="b4">엔화 환전<span class="hint">1인당 3~5만엔 권장 · 잔돈 위주</span></label></li>
+          <li><input type="checkbox" id="b5"><label for="b5">해외 유심 / eSIM / 포켓와이파이</label></li>
+          <li><input type="checkbox" id="b6"><label for="b6">해외 결제 카드 준비<span class="hint">트래블월렛 · 트래블로그 추천</span></label></li>
+          <li><input type="checkbox" id="b7"><label for="b7">여행자 보험 가입</label></li>
+          <li><input type="checkbox" id="b8"><label for="b8">난카이 공항선 교통권 준비<span class="hint">첫날·마지막날 KIX ↔ 난바 이동용 · 왕복 권장</span></label></li>
+          <li><input type="checkbox" id="b8b"><label for="b8b">ICOCA 카드 준비<span class="hint">시내 전철·버스·편의점 결제용</span></label></li>
+          <li><input type="checkbox" id="b9"><label for="b9">구글맵 오프라인 지도 저장</label></li>
+          <li><input type="checkbox" id="b10"><label for="b10">번역 앱 · 파파고 오프라인 팩</label></li>
+          <li><input type="checkbox" id="b11"><label for="b11">콘센트 돼지코 어댑터 (110V)</label></li>
+          <li><input type="checkbox" id="b12"><label for="b12">상비약 · 반창고 · 멀미약</label></li>
+          <li><input type="checkbox" id="b13"><label for="b13">옷차림 준비<span class="hint">5월 오사카 평균 17~25℃ · 얇은 겉옷</span></label></li>
+          <li><input type="checkbox" id="b14"><label for="b14">맛집 · 카페 리스트 저장</label></li>
+          <li><input type="checkbox" id="b15"><label for="b15">🍣 교토 <b>안지(숙성회)</b> 예약<span class="hint">한 달 전 예약 필수 · 늦어도 4월 20일 전</span></label></li>
+          <li><input type="checkbox" id="b16"><label for="b16">🍣 오사카 <b>키타로우즈시 도구야스지</b> 예약<span class="hint">타베로그에서 사전 예약</span></label></li>
+        </ul>
+      </div>
+
+      <!-- 여행 중 -->
+      <div class="check-col during">
+        <h4><span class="icon">2</span> 여행 중 체크</h4>
+        <ul class="check-list">
+          <li><input type="checkbox" id="d1"><label for="d1">여권 · 귀국편 항공권 상시 소지</label></li>
+          <li><input type="checkbox" id="d2"><label for="d2">숙소 주소 · 연락처 메모<span class="hint">택시 탑승 시 일본어로 보여주기</span></label></li>
+          <li><input type="checkbox" id="d3"><label for="d3">매일 아침 일정 · 날씨 체크</label></li>
+          <li><input type="checkbox" id="d4"><label for="d4">카드 · 현금 분산 휴대</label></li>
+          <li><input type="checkbox" id="d5"><label for="d5">면세 (Tax Free) 영수증 보관<span class="hint">5,000엔 이상 구매 시</span></label></li>
+          <li><input type="checkbox" id="d5b"><label for="d5b">돈키호테 필수템 구매<span class="hint">휴족시간 · 휴눈시간 (1일차 밤)</span></label></li>
+          <li><input type="checkbox" id="d6"><label for="d6">쓰레기 분리수거 주의<span class="hint">거리 쓰레기통 드물 · 편의점 이용</span></label></li>
+          <li><input type="checkbox" id="d7"><label for="d7">식당/카페 금연/흡연석 확인</label></li>
+          <li><input type="checkbox" id="d8"><label for="d8">전철 막차 시간 확인<span class="hint">대부분 24시 전후</span></label></li>
+          <li><input type="checkbox" id="d9"><label for="d9">보조배터리 충전</label></li>
+          <li><input type="checkbox" id="d10"><label for="d10">사진 · 영상 백업 (구글포토)</label></li>
+          <li><input type="checkbox" id="d11"><label for="d11">출국 전 공항 도착 2시간 전</label></li>
+          <li><input type="checkbox" id="d12"><label for="d12">한국 입국 면세한도 확인<span class="hint">1인 $800 · 주류 2병 등</span></label></li>
+        </ul>
+
+        <div class="weather-box">
+          <b>Tip ·</b> 5월 오사카는 낮에 덥고 저녁에 쌀쌀해요. 얇은 가디건/바람막이 + 편한 운동화 필수. 비 올 가능성도 있어서 접이식 우산 추천.
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    Have a great trip to Osaka! 🏯
+  </footer>
+
+</div>
+
+<script>
+  // 체크리스트 상태 로컬 저장
+  const boxes = document.querySelectorAll('.check-list input[type="checkbox"]');
+  boxes.forEach(box => {
+    const key = 'osaka_' + box.id;
+    if (localStorage.getItem(key) === '1') box.checked = true;
+    box.addEventListener('change', () => {
+      localStorage.setItem(key, box.checked ? '1' : '0');
+    });
+  });
+
+</script>
+</body>
+</html>
