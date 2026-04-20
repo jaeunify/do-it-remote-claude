@@ -16,12 +16,20 @@
       "Bash(pwd)",
       "Bash(echo *)",
       "Bash(mkdir *)",
-      "Bash(git status)",
-      "Bash(git status *)",
-      "Bash(git diff *)",
-      "Bash(git log *)",
-      "Bash(git show *)",
-      "Bash(git branch *)"
+      "Bash(git push)",
+      "Bash(git push *)",
+      "Bash(git pull)",
+      "Bash(git pull *)",
+      "Bash(git fetch)",
+      "Bash(git fetch *)",
+      "mcp__git__git_status",
+      "mcp__git__git_diff",
+      "mcp__git__git_diff_unstaged",
+      "mcp__git__git_diff_staged",
+      "mcp__git__git_log",
+      "mcp__git__git_show",
+      "mcp__git__git_commit",
+      "mcp__git__git_add"
     ],
     "deny": [
       "Read(.env*)",
@@ -38,7 +46,8 @@
       "Bash(rmdir *)",
       "Bash(del *)",
       "Bash(Remove-Item *)",
-      "Bash(git push *)",
+      "Bash(git push --force*)",
+      "Bash(git push -f *)",
       "Bash(git reset --hard*)",
       "Bash(git clean *)",
       "Bash(curl *)",
@@ -53,7 +62,12 @@
       "Bash(cat .env*)",
       "Bash(type .env*)",
       "Bash(Get-Content .env*)",
-      "WebFetch"
+      "WebFetch",
+      "mcp__git__git_reset",
+      "mcp__git__git_checkout",
+      "mcp__git__git_create_branch",
+      "mcp__git__git_init"
     ]
-  }
+  },
+  "enabledMcpjsonServers": ["git"]
 }
