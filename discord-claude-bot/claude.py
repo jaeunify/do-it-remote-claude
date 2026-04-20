@@ -82,7 +82,7 @@ class ClaudeProcess:
 
         첫 호출은 새 대화, 이후는 --continue로 세션을 이어간다.
         """
-        args = [CLAUDE_EXE, "-p"]
+        args = [CLAUDE_EXE, "--mcp-config", ".mcp.json", "-p"]
         if not self._first:
             args.append("--continue")
         args.append(prompt)

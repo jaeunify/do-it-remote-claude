@@ -2,7 +2,7 @@
   "mcpServers": {
     "git": {
       "command": "py",
-      "args": ["-m", "mcp_server_git"]
+      "args": ["-m", "mcp_server_git", "-v"]
     }
   }
 }
