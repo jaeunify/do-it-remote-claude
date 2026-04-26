@@ -1,4 +1,5 @@
 discord-claude-bot/.env
+.env
 .claude/settings.local.json
 
 # Python
@@ -7,3 +8,8 @@ __pycache__/
 *.pyo
 venv/
 .venv/
+
+# Docker — 컨테이너에서 entrypoint가 git clone으로 만드는 작업 디렉토리.
+# 호스트에서 로컬 테스트할 때 생길 수 있어서 무시.
+playground/
+workspace/

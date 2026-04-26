@@ -102,7 +102,71 @@ py bot.py
 
 ---
 
-## 6. 무엇을 할 수 있나요?
+## 6. Docker 로 띄우기
+
+로컬 PC에 파이썬/노드/Claude CLI 를 직접 깔지 않고 컨테이너로 굴리는 방법.
+
+### 1) 호스트에서 Claude 로그인 (1회)
+
+컨테이너는 호스트의 OAuth 토큰을 마운트해서 쓴다. 팀플랜 사용량 그대로 사용된다.
+
+```bash
+claude login
+```
+
+토큰은 `~/.claude/` (Windows: `%USERPROFILE%\.claude\`) 에 저장된다.
+
+### 2) `discord-claude-bot/.env` 작성
+
+```env
+# Discord
+DISCORD_TOKEN=your_bot_token_here
+ALLOWED_USER_ID=your_discord_user_id_here
+
+# 컨테이너 안에서 clone 받을 repo 들 (콤마 구분)
+PLAYGROUND_REPOS=https://github.com/bloblab217/project_kov.git,https://github.com/jaeunify/playground.git
+
+# GitHub PAT — fine-grained 는 owner 단위라 owner 별로 토큰을 하나씩 발급해
+# "owner1:token1,owner2:token2" 형태로 모아둔다. owner 매칭은 case-insensitive.
+GITHUB_PAT=BLOBLAB217:github_pat_xxx_for_org,JAEUNIFY:github_pat_yyy_for_user
+
+# 커밋 작성자
+GIT_USER_EMAIL=you@example.com
+GIT_USER_NAME=Remote Claude Bot
+```
+
+> ⚠️ Docker 환경에서는 `CLAUDE_PATH` 변수를 비워둘 것 (이미지 안의 `claude` 가 PATH 에 잡혀 있음).
+
+### 3) 호스트 OAuth 디렉토리 경로 지정 후 실행
+
+```bash
+# Windows (PowerShell)
+$env:CLAUDE_HOST_DIR="$env:USERPROFILE\.claude"
+docker compose up -d --build
+
+# macOS / Linux
+export CLAUDE_HOST_DIR=$HOME/.claude
+docker compose up -d --build
+```
+
+### 4) 로그 확인 / 종료
+
+```bash
+docker compose logs -f
+docker compose down
+```
+
+### 동작 방식
+
+- 컨테이너 시작 시 `entrypoint.sh` 가 GitHub PAT 로 git credential 셋업
+- `PLAYGROUND_REPOS` 의 모든 repo 를 `/workspace/<repo-name>` 으로 clone
+- `bot.py` 가 실행되며, Claude CLI 의 작업 디렉토리는 `/workspace`
+- Discord 에서 `!ask` 를 보내면 Claude 가 `/workspace` 아래의 여러 repo 를 다룸
+- 컨테이너 재시작 시 `/workspace` 는 초기화 (매번 새 clone)
+
+---
+
+## 7. 무엇을 할 수 있나요?
 
 Claude에게 코드 작업을 시키고 자동으로 `git push`되도록 설정해두면, **GitHub Pages 배포 결과를 폰으로 바로 확인**할 수 있어요. 일단은 이 정도로 활용 중입니다.
 

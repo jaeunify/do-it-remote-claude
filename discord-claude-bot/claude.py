@@ -16,8 +16,11 @@ ANSI_ESCAPE = re.compile(r"\x1b(?:[@-Z\\-_]|\[[0-9;]*[ -/]*[@-~])")
 EDIT_INTERVAL = 0.5       # Discord 메시지 edit 최소 간격 (초)
 READ_SIZE     = 4096
 
-# claude.py 기준 상위 = 프로젝트 루트 (.claude/ 설정이 위치한 디렉토리)
-PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# 작업 디렉토리 — env 우선, 없으면 claude.py 상위(프로젝트 루트) 사용
+# 도커 환경에서는 entrypoint가 WORKSPACE_DIR=/workspace 로 주입한다.
+WORKSPACE_DIR = os.environ.get("WORKSPACE_DIR") or os.path.dirname(
+    os.path.dirname(os.path.abspath(__file__))
+)
 
 
 def _find_claude() -> str:
@@ -87,11 +90,11 @@ class ClaudeProcess:
             args.append("--continue")
         args.append(prompt)
 
-        logger.info(f"claude 실행 (cwd={PROJECT_ROOT}): {' '.join(args[:3])} ...")
+        logger.info(f"claude 실행 (cwd={WORKSPACE_DIR}): {' '.join(args[:3])} ...")
 
         self._current = await asyncio.create_subprocess_exec(
             *args,
-            cwd=PROJECT_ROOT,
+            cwd=WORKSPACE_DIR,
             stdout=asyncio.subprocess.PIPE,
             stderr=asyncio.subprocess.PIPE,
         )
